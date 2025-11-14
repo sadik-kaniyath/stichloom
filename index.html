@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stitch Loom – Customize Ethnic Wear</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <style>
+    :root {
+      --bg: #07122a;
+      --text: #e4e9cc;
+      --muted: #aeb7d4;
+      --accent: #f4a93a;
+      --card: #0f224a;
+      --max: 1140px;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+     background-image: url("bgimg.png");
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max);
+      margin-inline: auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(8px);
+      background: rgba(7,18,42,.6);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: .6px;
+    }
+
+    .brand .sub {
+      display: block;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1.4px;
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .links a { color: var(--muted); }
+    .links a:hover { color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      height: 44px;
+      padding: 0 18px;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.14);
+      transition: .2s ease;
+    }
+
+    .btn:hover { background: rgba(255,255,255,.06); }
+    .btn.primary {
+      background: var(--accent);
+      color: #1a1204;
+      border-color: transparent;
+      box-shadow: 0 6px 18px rgba(244,169,58,.35);
+    }
+    .btn.primary:hover { filter: brightness(1.05); }
+
+    /* HERO SECTION */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      padding: 80px 0 60px;
+    }
+
+    .hero-text h1 {
+      font-weight: 800;
+      font-size: clamp(42px, 6vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 14px;
+    }
+
+    .hero-text p {
+      max-width: 56ch;
+      margin-bottom: 28px;
+      color: var(--muted);
+    }
+
+    /* HERO FABRIC – Perfect seamless blend */
+    .hero-fabric {
+      position: relative;
+      min-height: 420px;
+      overflow: visible;
+      isolation: isolate;
+    }
+
+    /* Paint the fabric softly blended into background */
+    .hero-fabric::before {
+      width: 100%;
+      position: absolute;
+      inset: -8%;
+      background: url("sharavani.png") center/cover no-repeat;
+      z-index: 1;
+    }
+    /* COLLECTIONS */
+    section { padding: 36px 0; }
+    h2 { font-size: clamp(22px, 3.2vw, 34px); margin: 0 0 18px; }
+
+    .grid-3 {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .card img { width: 100%; height: 220px; object-fit: cover; }
+    .card .cap { padding: 14px 16px; color: var(--muted); }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+      margin-top: 8px;
+    }
+
+    .feature {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+
+
+    /* ===== WHY CHOOSE US SECTION ===== */
+.why-choose-us {
+  text-align: center;
+  padding: 60px 20px;
+  background: transparent;
+}
+
+.why-choose-us h2 {
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+}
+
+.feature {
+  text-align: center;
+  color: #e4e9cc;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 30px 20px;
+  transition: 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-4px);
+}
+
+.feature .icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #f4a93a;
+  transition: 0.3s ease;
+}
+
+.feature:hover .icon {
+  color: #ffd480;
+}
+
+.feature h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.feature p {
+  color: #aeb7d4;
+  font-size: 14px;
+  margin: 0;
+}
+
+.custom-icon {
+  width: 60px;              /* adjust size as needed */
+  height: 60px;
+  margin-bottom: 15px;
+  filter: brightness(0) saturate(100%) invert(85%) sepia(49%) saturate(274%) hue-rotate(347deg) brightness(88%) contrast(93%);
+  transition: all 0.3s ease;
+}
+
+
+
+
+/* Responsive */
+
+
+
+
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 36px;
+    }
+
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 0;
+    }
+
+    .minor {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;      /* centers vertically */
+  gap: 8px;                 /* optional: spacing between items */
+  color: var(--muted);
+  text-align: center;
+  width: 100%;
+  padding: 0;          /* adds vertical space */
+}
+    /* RESPONSIVE */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-fabric { min-height: 320px; margin-top: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .links { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 992px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#f4a93a" stroke-width="2" stroke-linecap="round"/></svg>
+        <div>
+          <div>STITCH LOOM</div>
+          <span class="sub">QUALITY MEETS TIME</span>
+        </div>
+      </a>
+      <nav class="links">
+        <a href="aboutus.html">About</a>
+        <a href="login.html">Login</a>
+        <a  href="register.html">Register</a>
+        <a  href="contact.html">Contact</a>
+        <button id="logoutBtn" class="btn primary" style="display:none;">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Customize<br>Ethnic Wear</h1>
+        <p>Tailor your look with premium fabrics, threads, and designs crafted to perfection. Build your outfit online and our experts will stitch it to your measurements.</p>
+        <a class="btn primary" href="#customize">Get Started</a>
+      </div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section>
+      <h2>Explore Our Collections</h2>
+      <div class="grid-3">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1542060748-10c28b62716f?q=80&w=1200&auto=format&fit=crop" alt="Buttons on linen fabric">
+          <div class="cap">Natural buttons & trims</div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1582964478396-39aaa6beba5a?q=80&w=1200&auto=format&fit=crop" alt="Golden thread spool">
+          <div class="cap">Premium silk threads</div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1604909052743-373560fe8f1f?q=80&w=1200&auto=format&fit=crop" alt="Assorted buttons">
+          <div class="cap">Colorful accessories</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="services" class="why-choose-us">
+  <h2>Why Choose Us</h2>
+  <div class="features">
+    <div class="feature">
+      <i class="bi bi-patch-check icon"></i>
+      <h3>Premium Fabrics</h3>
+      <p>Handpicked materials that define elegance and quality.</p>
+    </div>
+    <div class="feature">
+      <i class="bi bi-person-lines-fill icon"></i>
+      <h3>Expert Tailoring</h3>
+      <p>Custom-measured and hand-finished with precision.</p>
+    </div>
+    <div class="feature">
+      <i class="bi bi-truck icon"></i>
+      <h3>Timely Delivery</h3>
+      <p>Crafted with care, delivered with commitment.</p>
+    </div>
+      <div class="feature">
+  <img src="b2b.png" alt="B2B Customization" class="custom-icon">
+  <h3>B2B Customization</h3>
+  <p>Tailored solutions for businesses and partners.</p>
+</div>
+
+
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="minor">© 2025 Stitch Loom. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>
+(function(){
+  const loginLink = document.getElementById('loginLink');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  // Check login status
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+  if(isLoggedIn){
+    // Show logout button
+    loginLink.style.display = 'none';
+    logoutBtn.style.display = 'inline-flex';
+  } else {
+    // If not logged in → redirect to login page
+    // Redirect removed: allow public access to this page
+  }
+
+  // Logout function
+  logoutBtn.addEventListener('click', ()=>{
+    localStorage.removeItem('loggedIn');
+    sessionStorage.removeItem('justRegistered');
+    window.location.href = 'login.html';
+  });
+})();
+</script>
+
+</body>
+</html>

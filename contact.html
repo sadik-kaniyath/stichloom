@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact | Stitch Loom</title>
+
+<!-- ✅ Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" href="icons8-phone-ios7-16.png">
+
+<!-- ✅ Bootstrap main CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<!-- ✅ Bootstrap Icons (required for <i class="bi bi-...">) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+
+  /* Make footer stay at the bottom of the viewport on short pages */
+html, body { height: 100%; }                 /* ensure full-height context */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }                     /* main grows to fill space */
+
+/* Footer styles */
+footer { 
+  flex-shrink: 0;                             /* don't let footer collapse */
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 24px 0;
+  background: rgba(7,18,42,.4);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  /* optional: keep a little gap from content; remove if you don't want it */
+  margin-top: 24px; 
+}
+
+:root{
+  --bg:#07122a; --text:#e4e9cc; --muted:#aeb7d4; --accent:#f4a93a;
+  --max:1140px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+  color:var(--text);
+  background:radial-gradient(1200px 700px at 80% -200px,#13265a 0,transparent 60%),var(--bg);
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max); margin-inline:auto; padding:0 20px}
+
+/* === Same Header Design === */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+  background: rgba(7,18,42,.6);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+.brand .sub {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1.4px;
+}
+.links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.links a { color: var(--muted); }
+.links a:hover { color: #fff; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.14);
+  transition: .2s ease;
+}
+.btn:hover { background: rgba(255,255,255,.06); }
+.btn.primary {
+  background: var(--accent);
+  color: #1a1204;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(244,169,58,.35);
+}
+.btn.primary:hover { filter: brightness(1.05); }
+
+/* === Contact Content === */
+main {
+  padding: 60px 20px;
+}
+h1 {
+  font-size: 32px;
+  text-align: center;
+  margin: 0 0 12px;
+}
+p.muted {
+  color: var(--muted);
+  text-align: center;
+  margin: 0 0 32px;
+}
+.contact-list {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  justify-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contact-item {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  transition: 0.3s ease;
+}
+.contact-item:hover {
+  background: rgba(255,255,255,.07);
+  transform: translateY(-3px);
+}
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* 🎨 Colored icons */
+.bi-telephone-fill { color: #25D366; } /* green */
+.bi-whatsapp { color: #25D366; }      /* green */
+.bi-instagram { color: #E4405F; }     /* pink */
+
+/* Optional glow effect */
+.icon i {
+  text-shadow: 0 0 12px rgba(255,255,255,0.15);
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 👈 4 in one line */
+  gap: 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: block;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--text);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.contact-item:hover {
+  background: rgba(255,255,255,.07);
+  transform: translateY(-3px);
+}
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* 🎨 Icon Colors */
+.bi-telephone-fill, .bi-whatsapp { color: #25D366; } /* green */
+.bi-instagram { color: #E4405F; } /* pink */
+.bi-geo-alt-fill { color: #f4a93a; } /* gold */
+
+footer { 
+  flex-shrink: 0;                             /* don't let footer collapse */
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 24px 0;
+  background: rgba(7,18,42,.4);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  /* optional: keep a little gap from content; remove if you don't want it */
+  margin-top: 24px; 
+}
+
+.foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minor {
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-list {
+    grid-template-columns: 1fr; /* 1 per row on mobile */
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="#f4a93a" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div>STITCH LOOM</div>
+        <span class="sub">QUALITY MEETS TIME</span>
+      </div>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" class="btn">Login</a>
+      <a href="register.html" class="btn">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTACT MAIN -->
+<main>
+  <h1>Contact Us</h1>
+  <p class="muted">We’d love to hear from you — reach out anytime for custom stitching or inquiries.</p>
+  
+   <div class="contact-list">
+
+  <!-- 📞 Phone -->
+  <a href="tel:+919633683042" class="contact-item">
+    <div class="icon"><i class="bi bi-telephone-fill"></i></div>
+    <div>+91 96336 83042</div>
+    <span>Phone Support</span>
+  </a>
+
+  <!-- 💬 WhatsApp -->
+  <a href="https://wa.me/919633683042" target="_blank" rel="noopener" class="contact-item">
+    <div class="icon"><i class="bi bi-whatsapp"></i></div>
+    <div>Chat on WhatsApp</div>
+    <span>Quick replies available</span>
+  </a>
+
+  <!-- 📸 Instagram -->
+  <a href="https://www.instagram.com/stitchloom" target="_blank" rel="noopener" class="contact-item">
+    <div class="icon"><i class="bi bi-instagram"></i></div>
+    <div>@stitchloom</div>
+    <span>Follow us on Instagram</span>
+  </a>
+
+  <!-- 📍 Location -->
+  <a href="https://www.google.com/maps/place/Kerala,+India" target="_blank" rel="noopener" class="contact-item">
+    <div class="icon"><i class="bi bi-geo-alt-fill"></i></div>
+    <div>Find Us on Maps</div>
+    <span>Visit Our Store</span>
+  </a>
+
+</div>
+
+</main>
+
+<footer>
+  <div class="container foot">
+    <div class="minor">
+      © <span id="year"></span> Stitch Loom — All Rights Reserved.
+    </div>
+  </div>
+</footer>
+</body>
+</html>

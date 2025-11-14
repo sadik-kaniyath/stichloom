@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Login | Stitch Loom</title>
+<style>
+  :root{
+    --bg:#07122a; --text:#e4e9cc; --muted:#aeb7d4; --accent:#f4a93a;
+    --max:1140px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+    color:var(--text);
+    background:radial-gradient(1200px 700px at 80% -200px,#13265a 0,transparent 60%),var(--bg);
+  }
+  a{color:inherit;text-decoration:none}
+  .container{max-width:var(--max); margin-inline:auto; padding:0 20px}
+
+  /* === Your exact header styles === */
+  header {
+    position: sticky; top: 0; z-index: 40;
+    backdrop-filter: blur(8px);
+    background: rgba(7,18,42,.6);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.6px; }
+  .brand .sub { display:block; font-weight:600; font-size:12px; color:var(--muted); letter-spacing:1.4px; }
+  .links { display:flex; gap:30px; align-items:center; }
+  .links a { color: var(--muted); }
+  .links a:hover { color:#fff; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    height:44px; padding:0 18px; border-radius:12px; background:transparent; color:var(--text);
+    border:1px solid rgba(255,255,255,.14); transition:.2s ease;
+  }
+  .btn:hover{ background:rgba(255,255,255,.06); }
+  .btn.primary{
+    background:var(--accent); color:#1a1204; border-color:transparent;
+    box-shadow:0 6px 18px rgba(244,169,58,.35);
+  }
+  .btn.primary:hover{ filter:brightness(1.05); }
+
+  /* Page layout */
+  main{ padding:48px 0; }
+  .card{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+    border-radius:14px; padding:24px; max-width:720px; margin:36px auto;
+  }
+  h1{margin:0 0 8px; font-size:30px}
+  p.muted{color:var(--muted); margin:0 0 18px}
+  .grid{display:grid; gap:14px}
+  .input-wrap{ position:relative; }
+  label{display:block; margin:0 0 6px; color:var(--muted); font-size:.92rem}
+  input{
+    width:100%; padding:12px 14px; border-radius:10px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(17,31,69,.6); color:var(--text); outline:none;
+  }
+  input:focus{ box-shadow:0 0 0 4px rgba(244,169,58,.35); border-color:transparent; }
+  .toggle-eye{
+    position:absolute; right:12px; top:46px; cursor:pointer; font-size:14px; color:var(--muted);
+  }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
+  .err{ color:#ff9b9b; margin-top:6px; min-height:20px }
+  .note{ display:none; margin-top:10px; color:var(--muted); font-size:.9rem }
+
+  @media (max-width:560px){ .links{display:none} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="#f4a93a" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div>STITCH LOOM</div>
+        <span class="sub">QUALITY MEETS TIME</span>
+      </div>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="aboutus.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h1>Login</h1>
+    <p class="muted">Enter your registered email and password.</p>
+
+    <form id="loginForm" class="grid" autocomplete="on" novalidate>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="input-wrap">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" placeholder="••••" minlength="4" required />
+        <span class="toggle-eye" data-target="password">👁</span>
+      </div>
+      <div class="row">
+        <button class="btn primary" type="submit">Login</button>
+        <a class="btn" href="register.html">Create account</a>
+      </div>
+      <div id="err" class="err"></div>
+      <div id="note" class="note">No account found. Please <a href="register.html" style="color:#f4a93a">register</a> first.</div>
+    </form>
+  </div>
+</main>
+
+<script>
+  // show/hide password
+  document.querySelectorAll('.toggle-eye').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const input=document.getElementById(el.dataset.target);
+      const show=input.type==='password';
+      input.type=show?'text':'password';
+      el.textContent=show?'🙈':'👁';
+    });
+  });
+
+  // login logic
+  document.getElementById('loginForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const stored=localStorage.getItem('stitchUser');
+    const err=document.getElementById('err');
+    const note=document.getElementById('note');
+    err.textContent=''; note.style.display='none';
+    if(!stored){ note.style.display='block'; return; }
+    const u=JSON.parse(stored);
+    const fd=new FormData(e.target);
+    const email=String(fd.get('email')||'').trim().toLowerCase();
+    const pass=String(fd.get('password')||'');
+    if(email!==u.email || pass!==u.password){
+      err.textContent='Invalid email or password.'; return;
+    }
+    localStorage.setItem('loggedIn','true');
+    location.href='index.html';
+  });
+</script>
+</body>
+</html>
